@@ -22,6 +22,7 @@ public class ActivitySelection{
 		for(int i:li) {
 			System.out.println(i);
 		}
+		System.out.println(maxAct);
 		
 	}
 }
