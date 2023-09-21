@@ -12,17 +12,17 @@ public class FindIternaryOfTicket {
 		hm.put("Goa", "Chennai");
 		hm.put("Delhi", "Goa");
 		
-		System.out.println((ans(hm));
+		System.out.println(ans(hm));
 	}
 	
 	static String ans(HashMap<String,String>hm) {
-		HashMap<String, String>rhm=HashMap<String, String>;
+		HashMap<String, String>rhm=new HashMap<>();
 		
 		for(String s:hm.keySet()) {
 			rhm.put(hm.get(s), s);
 		}
 		
-		for(String s:hm) {
+		for(String s:hm.keySet()) {
 			if(!rhm.containsKey(s)) {
 				return s;
 			}
