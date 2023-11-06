@@ -1,4 +1,4 @@
-package Leetcode;
+package BinaryTree;
 
 //https://leetcode.com/problems/symmetric-tree/
 

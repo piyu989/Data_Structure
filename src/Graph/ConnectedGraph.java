@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import Graph.CreaatingGraph.Edge;
+//import Graph.BFSTraversal.Edge;
 
-public class BFSTraversal {
+public class ConnectedGraph {
 	
 	static class Edge{
 		int src;
@@ -42,17 +42,46 @@ public class BFSTraversal {
 		graph[4].add(new Edge(4,2,2));
 	}
 	
-	static void bfs(ArrayList<Edge> graph[]) {
+	static void dfs(ArrayList<Edge> graph[]) {
+		boolean[]vis=new boolean[graph.length];	
+		for(int i=0;i<graph.length;i++) {
+			if(!vis[i]) {
+				dfsUtil(graph, vis, i);
+			}
+		}
+	}
+	
+	static void dfsUtil(ArrayList<Edge>graph[],boolean[]vis,int cur) {
+		System.out.print(vis[cur]);
+		vis[cur]=true;
+		
+		for(int i=0;i<graph[cur].size();i++) {
+			Edge e=graph[cur].get(i);
+			if(!vis[e.dest]) {
+				dfsUtil(graph, vis, e.dest);
+			}
+		}
+	}
+	
+	static void bfs(ArrayList<Edge>graph[]) {
+		boolean[]vis=new boolean[graph.length];	
+		for(int i=0;i<graph.length;i++) {
+			if(!vis[i]) {
+				bfsUtil(graph, vis);
+			}
+		}
+	}
+	
+	static void bfsUtil(ArrayList<Edge>graph[],boolean vis[]) {
 		Queue<Integer>q=new LinkedList<>();
 		q.add(0);
-		boolean arr[]=new boolean[graph.length];
 		
 		while(!q.isEmpty()) {
 			int cur=q.remove();
 			
-			if(!arr[cur]){
-				System.out.print(cur+" ");
-				arr[cur]=true;
+			if(!vis[cur]) {
+				System.out.print(cur);
+				vis[cur]=true;
 				for(int i=0;i<graph[cur].size();i++) {
 					Edge e=graph[cur].get(i);
 					q.add(e.dest);
@@ -62,14 +91,9 @@ public class BFSTraversal {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ArrayList<Edge> graph[]=new ArrayList[5];
 		createGraph(graph);
-//		for(int i=0;i<graph[2].size();i++) {
-//			int e=graph[2].get(i).dest;
-//			System.out.println(e);
-//		}
-		bfs(graph);
+//		System.out.println(bfs(graph));
 	}
 
 }

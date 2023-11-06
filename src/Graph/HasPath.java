@@ -1,12 +1,11 @@
 package Graph;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
-import Graph.CreaatingGraph.Edge;
+import Graph.DFSTraversal.Edge;
 
-public class BFSTraversal {
+public class HasPath {
+	
 	
 	static class Edge{
 		int src;
@@ -42,34 +41,25 @@ public class BFSTraversal {
 		graph[4].add(new Edge(4,2,2));
 	}
 	
-	static void bfs(ArrayList<Edge> graph[]) {
-		Queue<Integer>q=new LinkedList<>();
-		q.add(0);
-		boolean arr[]=new boolean[graph.length];
-		
-		while(!q.isEmpty()) {
-			int cur=q.remove();
-			
-			if(!arr[cur]){
-				System.out.print(cur+" ");
-				arr[cur]=true;
-				for(int i=0;i<graph[cur].size();i++) {
-					Edge e=graph[cur].get(i);
-					q.add(e.dest);
-				}
+	static boolean hasPath(ArrayList<Edge>graph[],boolean[]vis,int cur,int trgt) {
+		if(cur==trgt) {
+			return true;
+		}
+		vis[cur]=true;
+		for(int i=0;i<graph[cur].size();i++) {
+			Edge e=graph[cur].get(i);
+			if(!vis[e.dest]&&hasPath(graph, vis, e.dest, trgt)) {
+				return true;
 			}
 		}
+		return false;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Edge> graph[]=new ArrayList[5];
 		createGraph(graph);
-//		for(int i=0;i<graph[2].size();i++) {
-//			int e=graph[2].get(i).dest;
-//			System.out.println(e);
-//		}
-		bfs(graph);
+		System.out.println(hasPath(graph, new boolean[graph.length], 0, 4  ));
 	}
 
 }
