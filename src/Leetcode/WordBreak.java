@@ -5,18 +5,7 @@ import java.util.List;
 
 public class WordBreak {
 	
-	static boolean ans(String s, List<String> wordDict) {
-		
-	}
-	
-	static void h(String s,List<String> word,List<String>li,int i,String temp) {
-		if(i==s.length()) {
-			return;
-		}
-		if
-		char c=s.charAt(i);
-		h(s.substring(1), word, li, i, temp+c);
-	}
+
 	
 	public static boolean wordBreak(String s, List<String> wordDict) {
         List<String>li=new ArrayList<>();
@@ -53,7 +42,8 @@ public class WordBreak {
 //		li.add("dog");
 //		li.add("leet");
 		li.add("b");
-		System.out.println(ans("a", li));
+		li.add("a");
+		System.out.println(li);
 	}
 
 }

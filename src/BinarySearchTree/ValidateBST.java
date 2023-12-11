@@ -41,9 +41,10 @@ public class ValidateBST {
 			
 			boolean lef=validate(root.left);
 			if(root.left!=null&&root.right!=null) {
-			if(root.left.data>root.data||root.right.data<root.data) {
-				return false;
-			}}
+				if(root.left.data>root.data||root.right.data<root.data) {
+					return false;
+				}
+			}
 			boolean rig=validate(root.right);
 			
 			return lef||rig;
