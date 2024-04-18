@@ -1,7 +1,5 @@
 package DynamicProgramming;
 
-import java.util.Arrays;
-
 public class LongestCommonSubSequence {
 	
 	static int lcs(String a,String b,int sa,int sb) {

@@ -27,7 +27,8 @@ public class HeapSort {
 		for(int i=n/2;i>=0;i--) {
 			heapfiy(i,n,arr);
 		}
-		//heafify
+		
+		//heapify
 		for(int i=n-1;i>=1;i--) {
 			int temp=arr[0];
 			arr[0]=arr[i];
